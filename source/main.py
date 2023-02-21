@@ -1,8 +1,15 @@
-from notes import notes_info as ni
+from wave import Wave
 
 
 def main():
+    w1 = Wave("C#0")
+    w1.generate_wave()
 
+    w2 = Wave("G#2")
+    w2.generate_wave()
+
+    w3 = Wave("Bb6")
+    w3.generate_wave()
     pass
 
 

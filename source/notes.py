@@ -1,3 +1,4 @@
+import re
 
 notes_info = {
     0: {
@@ -479,3 +480,18 @@ notes_info = {
     }
 }
 
+
+class Note:
+    def __init__(self, _name):
+        self.name = _name
+        self.freq = get_note_freq(self.name)
+
+
+def get_note_freq(_note):
+    regex_note = r"([A-G]{1}[b#]{1}|[A-G]{1})"
+    regex_octave = r"[0-8]"
+
+    note = re.compile(regex_note).findall(_note)[0]
+    octave = int(re.compile(regex_octave).findall(_note)[0])
+
+    return notes_info[octave][note]["Hz"]
