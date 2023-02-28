@@ -1,16 +1,14 @@
 from wave import Wave
+import notes
 
 
 def main():
-    w1 = Wave("C#0")
-    w1.generate_wave()
 
-    w2 = Wave("G#2")
-    w2.generate_wave()
-
-    w3 = Wave("Bb6")
-    w3.generate_wave()
-    pass
+    for key in notes.notes_sounds.keys():
+        for note in notes.notes_sounds[key]:
+            print(f"{note}{key}")
+            w = Wave(f"{note}{key}")
+            w.generate_wave()
 
 
 if __name__ == "__main__":

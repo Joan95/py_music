@@ -1,6 +1,6 @@
 import re
 
-notes_info = {
+notes_sounds = {
     0: {
         "C": {
             "Hz": 16.35,
@@ -480,10 +480,21 @@ notes_info = {
     }
 }
 
+notes_figures = {
+    "whole_note": {"time": 4},
+    "half_note": {"time": 2},
+    "quarter_note": {"time": 1},
+    "eight_note": {"time": 1/2},
+    "sixteenth_note": {"time": 1/4},
+    "thirty_second_note": {"time": 1/8},
+    "sixty_fourth_note": {"time": 1/16}
+}
+
 
 class Note:
-    def __init__(self, _name):
+    def __init__(self, _name, figure="quarter_note"):
         self.name = _name
+        self.figure = notes_figures[figure]
         self.freq = get_note_freq(self.name)
 
 
@@ -494,4 +505,4 @@ def get_note_freq(_note):
     note = re.compile(regex_note).findall(_note)[0]
     octave = int(re.compile(regex_octave).findall(_note)[0])
 
-    return notes_info[octave][note]["Hz"]
+    return notes_sounds[octave][note]["Hz"]
